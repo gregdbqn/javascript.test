@@ -6,18 +6,15 @@
       <span class="mdl-layout-title">{{title}}</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="">Log in</a>
-        <a class="mdl-navigation__link" href="">Log out</a>
-      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Menu</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Public Quotes</a>
-      <a class="mdl-navigation__link" href="">Private Quotes</a>
+      <a class="mdl-navigation__link" *ngIf="!authService.authenticated" (click)="authService.login()">Log in</a>
+      <a class="mdl-navigation__link" *ngIf="authService.authenticated" (click)="authService.logout()">Log out</a>
+      <a class="mdl-navigation__link" routerLink="/public" routerLinkActive="active">Public Quotes</a>
+      <a class="mdl-navigation__link" *ngIf="authService.authenticated" routerLink="/private" routerLinkActive="active">Private Quotes</a>
     </nav>
   </div>
   <main class="mdl-layout__content">

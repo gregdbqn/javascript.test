@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -9,7 +10,7 @@ export class QuoteService {
 private publicQuoteUrl = 'http://localhost:1337/api/random-quote';
 private privateQuoteUrl = 'http://localhost:1337/api/protected/random-quote';
 
-constructor(private http: Http) { }
+constructor(private http: Http, private authHttp: AuthHttp) { }
 
 getPublicQuote()
 {
@@ -22,7 +23,7 @@ getPublicQuote()
 
 getPrivateQuote()
 {
-    return this.http
+    return this.authHttp
     .get(this.privateQuoteUrl)
     .toPromise()
     .then(response => response.json())

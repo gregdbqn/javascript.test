@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { AuthService } from './auth.service';
+import { AuthService } from './auth.service';
 import { QuoteService } from './quote.service';
 
 @Component({
@@ -11,8 +11,8 @@ export class PublicQuoteComponent implements OnInit {
 
   myQuote: string;
   constructor(
-    private quoteService: QuoteService
-    // ,private authService: AuthService
+    private quoteService: QuoteService,
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
