@@ -13,7 +13,8 @@ export class AuthService {
   // @TODO: Update AUTH_CONFIG and remove .example extension in src/app/auth/auth0-variables.ts.example
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.CLIENT_ID,
-    domain: AUTH_CONFIG.CLIENT_DOMAIN
+    domain: AUTH_CONFIG.CLIENT_DOMAIN,
+    audience: AUTH_CONFIG.AUDIENCE
   });
 
   // Create a stream of logged in status to communicate throughout app
